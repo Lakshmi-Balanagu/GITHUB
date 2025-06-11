@@ -1,0 +1,107 @@
+# -----------------------------
+# Git Daily Use & Recovery Commands (Cheat Sheet)
+# -----------------------------
+
+# ✅ 1. Create & Checkout Branch
+git checkout -b feature/login-api
+
+# ✅ 2. List Branches
+
+git branch            # local
+git branch -r         # remote
+
+# ✅ 3. Switch Branch
+
+git checkout main
+
+git switch main       # modern syntax
+
+# ✅ 4. Merge Branches
+
+git checkout main
+git merge feature/login-api
+
+# ✅ 5. Rebase Branch
+
+git checkout feature/login-api
+git rebase main
+
+# ✅ 6. Pull with Rebase (cleaner history)
+
+git pull --rebase origin main
+
+# ✅ 7. Reset (soft, mixed, hard)
+
+git reset --soft HEAD~1    # undo last commit, keep changes
+
+git reset --mixed HEAD~1   # undo commit + unstage
+
+git reset --hard HEAD~1    # discard everything
+
+# ✅ 8. Cherry Pick a Commit
+
+git checkout main
+git cherry-pick <commit-hash>
+
+# ✅ 9. Amend Commit
+
+git commit --amend -m "Updated commit message"
+
+# ✅ 10. Undo a Push (force push)
+
+git reset --hard HEAD~1
+git push -f
+
+# ✅ 11. Stash Changes
+
+git stash save "WIP login module"
+git stash list
+git stash pop
+
+# ✅ 12. See Who Changed What
+
+git blame filename.py
+
+# ✅ 13. Git Clean (delete untracked)
+
+git clean -fd
+
+# ✅ 14. Track New Remote Branch
+
+git fetch origin
+
+git checkout -t origin/feature/new-api
+
+# ✅ 15. Rename Branch
+
+git branch -m old-name new-name
+
+git push origin :old-name new-name
+
+git push --set-upstream origin new-name
+
+# ✅ 16. Delete Branch
+
+git branch -d feature/bugfix
+
+git push origin --delete feature/bugfix
+
+# ✅ 17. Conflict Resolution
+# After resolving manually:
+git add .
+git commit
+
+# ✅ 18. Git Log Tricks
+
+git log --oneline --graph --all --decorate
+
+git log -p -1 <commit>
+
+# ✅ 19. Compare Branches
+
+git diff featureX..main
+
+# ✅ 20. Git Tag (for releases)
+
+git tag v1.0.0
+git push origin v1.0.0
